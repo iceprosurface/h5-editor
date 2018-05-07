@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server')
 var config = require("./webpack.dev.js");
-config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/");
+config.entry.app.unshift("webpack-dev-server/client?http://localhost:8867/");
 var compiler = webpack(config);
 var server = new WebpackDevServer(compiler);
-server.listen(8080);
+server.listen(8867);

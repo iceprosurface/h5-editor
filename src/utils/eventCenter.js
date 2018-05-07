@@ -18,9 +18,9 @@ const region = {
     },
     isInRegion (name, targetDom) {
         if (REGION.has(name)) {
-            let sourceRegion = REGION.get(name)
-            let sourceRect = sourceRegion.getBoundingClientRect()
-            let targetRect = targetDom.getBoundingClientRect()
+            let sourceRegion = REGION.get(name);
+            let sourceRect = sourceRegion.getBoundingClientRect();
+            let targetRect = targetDom.getBoundingClientRect();
             return sourceRect.top < targetRect.top &&
                     sourceRect.left < targetDom.left &&
                     sourceRect.right > targetDom.right &&
@@ -60,7 +60,7 @@ window.__eventCenterData = data;
         REGION.forEach((regionValue, key) => {
             if (regionValue && regionValue.getBoundingClientRect) {
                 let rect = JSON.parse(JSON.stringify(regionValue.getBoundingClientRect()));
-                rect.top += bodyScroll
+                rect.top += bodyScroll;
                 // 高度实际位置为 鼠标 y - bodyScroll
                 if(value==='mousedown') {
                     console.log(JSON.stringify(data.mouse) + JSON.stringify(rect))
@@ -74,7 +74,7 @@ window.__eventCenterData = data;
                     region.regions.push(key);
                 }
             }
-        })
+        });
         for (let key of keys) {
             if (mouseEventMap.has(key)) {
                 let mouseEventValue = mouseEventMap.get(key);

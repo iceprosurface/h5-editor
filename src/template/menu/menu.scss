@@ -8,5 +8,15 @@ ul {
         text-align: center;
         border-bottom: 1px solid #efefef;
         color: #efefef;
+        user-select: none;
     }
+}
+.global-menus-item {
+    position: fixed;
+    color: #efefef;
+    z-index: 100;
+    background: #353535;
+    width: 120px;
+    height: 30px;
+    text-align: center;
 }
