@@ -1,0 +1,31 @@
+.canvas {
+    width: 500px;
+    height: 850px;
+    position: relative;
+    .small {
+        position: absolute;
+        width: 320px;
+        height: 480px;
+        left: 50%;
+        top: 50%;
+        margin: -240px 0 0  -160px;
+        border: 1px solid #fd655b;
+    }
+    .small-container {
+        width: 1000px;
+        height: 1000px;
+        top: 50%;
+        left: 50%;
+        //margin: -500px 0 0 -500px;
+        position: absolute;
+    }
+    .large {
+        border: 1px solid #62cd67;
+        position: absolute;
+        width: 430px;
+        height: 820px;
+        left: 50%;
+        top: 50%;
+        margin: -410px 0 0 -215px;
+    }
+}
