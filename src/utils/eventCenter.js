@@ -16,6 +16,12 @@ const region = {
     init () {
         this.regions = [];
     },
+    /**
+     * 判断是否在区域内
+     * @param name
+     * @param targetDom
+     * @returns {boolean}
+     */
     isInRegion (name, targetDom) {
         if (REGION.has(name)) {
             let sourceRegion = REGION.get(name);
