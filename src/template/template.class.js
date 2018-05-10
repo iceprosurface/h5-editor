@@ -1,11 +1,20 @@
-import $ from 'jquery'
+import $ from 'jquery';
+
+/**
+ * 模板类
+ */
 export default class Template {
     _dom = null;
     _template = '';
     _entry = [];
-    constructor ({
+    /**
+     * 构造函数
+     * @param {DOMString} template
+     * @param {Array} entries
+     */
+    constructor({
         template,
-        entries
+        entries,
     }) {
         this._dom = $(template);
         this._template = template;
@@ -18,10 +27,13 @@ export default class Template {
             }
         }
     }
-    forEach (callback) {
+    /**
+     * 迭代器
+     * @param {Function} callback
+     */
+    forEach(callback) {
         this._entry.forEach(([key, dom], index, array) => {
-            callback.call(dom, key, index, array)
-        })
+            callback.call(dom, key, index, array);
+        });
     }
-
 }

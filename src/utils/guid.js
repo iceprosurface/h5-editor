@@ -1,12 +1,27 @@
+/**
+ * guid 生成器
+ * @desc 直接生成一个guid
+ * @return {string} guid
+ */
 export function guid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        let r = Math.random() * 16 | 0;
+        let v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
+
+/**
+ * uuid 生成器
+ * @desc 生成一个uuid
+ * @param {number} len 需要生成的位数
+ * @param {number} radix 进制
+ * @return {string} uuid
+ */
 export function uuid(len, radix = 16) {
-    var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
-    var uuid = [], i;
+    let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+    let uuid = [];
+    let i;
     radix = radix || chars.length;
 
     if (len) {
@@ -14,7 +29,7 @@ export function uuid(len, radix = 16) {
         for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random()*radix];
     } else {
         // rfc4122, version 4 form
-        var r;
+        let r;
 
         // rfc4122 requires these characters
         uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
@@ -25,10 +40,9 @@ export function uuid(len, radix = 16) {
         for (i = 0; i < 36; i++) {
             if (!uuid[i]) {
                 r = 0 | Math.random()*16;
-                uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                uuid[i] = chars[(i === 19) ? (r & 0x3) | 0x8 : r];
             }
         }
     }
-
     return uuid.join('');
 }

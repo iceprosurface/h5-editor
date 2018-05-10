@@ -10,19 +10,19 @@ const REGION = new Map();
 const region = {
     regions: [],
     regionsMouse: new Map(),
-    has: function (name) {
+    has: function(name) {
         return this.regions.indexOf(name) !== -1;
     },
-    init () {
+    init() {
         this.regions = [];
     },
     /**
      * 判断是否在区域内
-     * @param name
-     * @param targetDom
-     * @returns {boolean}
+     * @param {string} name
+     * @param {HTMLElement} targetDom
+     * @return {boolean}
      */
-    isInRegion (name, targetDom) {
+    isInRegion(name, targetDom) {
         if (REGION.has(name)) {
             let sourceRegion = REGION.get(name);
             let sourceRect = sourceRegion.getBoundingClientRect();
@@ -30,14 +30,14 @@ const region = {
             return sourceRect.top < targetRect.top &&
                     sourceRect.left < targetDom.left &&
                     sourceRect.right > targetDom.right &&
-                    sourceRect.bottom > targetDom.bottom
+                    sourceRect.bottom > targetDom.bottom;
         }
-        return false
-    }
+        return false;
+    },
 };
 const data = {
     mouse: {},
-    region
+    region,
 };
 const mouseEventMap = new Map();
 
@@ -49,16 +49,18 @@ window.__eventCenterData = data;
 /**
  *
  */
-['mousedown', 'mouseup', 'mousemove'].forEach(value => {
+['mousedown', 'mouseup', 'mousemove'].forEach((value) => {
     $dom.on(value, function(event) {
+        let bodyScroll;
+        let mouseTop;
         let target = $(event.target);
         let keys = mouseEventMap.keys();
         let settings = {
             originalEvent: event,
-            data
+            data,
         };
-        let bodyScroll = $(document).scrollTop();
-        let mouseTop = event.clientY + bodyScroll;
+        bodyScroll = $(document).scrollTop();
+        mouseTop = event.clientY + bodyScroll;
         data.mouse.x = event.clientX;
         data.mouse.y = mouseTop;
         data.mouse.originY = event.clientY;
@@ -68,8 +70,8 @@ window.__eventCenterData = data;
                 let rect = JSON.parse(JSON.stringify(regionValue.getBoundingClientRect()));
                 rect.top += bodyScroll;
                 // 高度实际位置为 鼠标 y - bodyScroll
-                if(value==='mousedown') {
-                    console.log(JSON.stringify(data.mouse) + JSON.stringify(rect))
+                if (value==='mousedown') {
+                    console.log(JSON.stringify(data.mouse) + JSON.stringify(rect));
                 }
                 if (
                     data.mouse.y > rect.top &&
@@ -87,35 +89,36 @@ window.__eventCenterData = data;
                 let mouseEvent = _get(mouseEventValue, value);
                 if (mouseEvent && _isFunction(mouseEvent)) {
                     if (mouseEvent.call(target, settings) === false) {
-                        return false
+                        return false;
                     }
                 }
             }
         }
-    })
+    });
 });
 
 /**
  * 注册事件
  * @param {string} pluginName
  * @param {{mousedown: (()), mousemove: (()), mouseup: (())}}option
+ * @param {object} pluginData
  */
-export function bindEvent (pluginName, option, pluginData) {
+export function bindEvent(pluginName, option, pluginData) {
     mouseEventMap.set(pluginName, option);
-    data[pluginName] = pluginData
+    data[pluginName] = pluginData;
 }
 /**
  * 移除事件
  * @param {string} pluginName
  */
-export function removeEvent (pluginName) {
+export function removeEvent(pluginName) {
     mouseEventMap.delete(pluginName);
 }
 /**
  * 注册区域块
  * @param {string} name
- * @param {node} dom
+ * @param {HTMLElement} dom
  */
-export function registerRegion (name, dom) {
+export function registerRegion(name, dom) {
     REGION.set(name, dom);
 }
