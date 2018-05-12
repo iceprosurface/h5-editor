@@ -6,3 +6,5 @@
 *.swo
 *.swn
 node_modules/
+build/
+dist/
