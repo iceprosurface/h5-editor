@@ -4,7 +4,7 @@ const http = require('http');
 let portStart = 8867;
 
 let config = require('./webpack.dev.js');
-config.entry.app.unshift('webpack-dev-server/client?http://localhost:8867/');
+config.entry.app.unshift(`webpack-dev-server/client?http://localhost:${portStart}/`);
 let compiler = webpack(config);
 /**
  * 查找可用端口

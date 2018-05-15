@@ -3,7 +3,7 @@ import {DragableElement} from './../../utils/dragableElement.class';
 /**
  * 画布上使用的 Img
  */
-export default class Img extends DragableElement {
+export default class _Image extends DragableElement {
     _img = null;
     /**
      * 初始化

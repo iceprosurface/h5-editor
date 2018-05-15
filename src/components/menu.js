@@ -27,7 +27,7 @@ bindEvent(PLUGIN_NAME, {
     },
     mouseup: function({data}) {
         data[PLUGIN_NAME].dragedDom.hide();
-        if (data.region.has(CANVAS_REGION)) {
+        if (data.region.has(CANVAS_REGION) && data[PLUGIN_NAME].dragedElement) {
             Event.trigger('canvas:createElement', data[PLUGIN_NAME].dragedElement, {
                 x: data.mouse.x + data[PLUGIN_NAME].originalOffset.deltaX,
                 y: data.mouse.y + data[PLUGIN_NAME].originalOffset.deltaY,
