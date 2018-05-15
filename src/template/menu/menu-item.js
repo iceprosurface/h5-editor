@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import './menu.scss';
 import menuItemHtml from './menu-item.html';
-import Template from '../template.class.js';
+import Template from 'common/template.class.js';
 const menuItem = new Template({
     template: menuItemHtml,
     entries: ['globalMenusItem'],

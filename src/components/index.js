@@ -1,6 +1,6 @@
 import canvas from './canvas';
 import menu from './menu';
-import * as DragableElement from './../utils/dragableElement.class';
+import * as DragableElement from '../utils/common/dragableElement.class';
 
 /**
  * 初始化函数

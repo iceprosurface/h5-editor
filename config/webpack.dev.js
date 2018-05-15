@@ -36,4 +36,10 @@ module.exports = {
             chunks: ['app'],
         }),
     ],
+    resolve: {
+        extensions: ['.js'],
+        alias: {
+            'common': path.resolve(__dirname, './../src/utils/common/'),
+        },
+    },
 };

@@ -1,4 +1,4 @@
-import {DragableElement} from './../../utils/dragableElement.class';
+import {DragableElement} from 'common/dragableElement.class';
 
 /**
  * text

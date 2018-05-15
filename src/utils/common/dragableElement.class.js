@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import {bindEvent} from './eventCenter.js';
-import {uuid} from './guid';
+import {bindEvent} from '../eventCenter.js';
+import {uuid} from '../guid';
 let _canvas = {
     _dom: $(document.body),
 };

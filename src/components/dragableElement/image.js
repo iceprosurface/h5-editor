@@ -1,4 +1,5 @@
-import {DragableElement} from './../../utils/dragableElement.class';
+import {DragableElement} from 'common/dragableElement.class';
+import mixins from 'common/mixins.decorator';
 
 /**
  * 画布上使用的 Img
