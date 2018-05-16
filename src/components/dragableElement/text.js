@@ -1,5 +1,8 @@
 import {DragableElement} from 'common/dragableElement.class';
+import mixins from 'common/mixins.decorator';
+import AutoExportElement from 'common/autoExportElement.mixin';
 
+@mixins(AutoExportElement)
 /**
  * text
  * @desc 画布上使用的 text

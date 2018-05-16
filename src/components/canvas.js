@@ -3,15 +3,8 @@ import Event from './../utils/eventBus.js';
 import {registerRegion} from './../utils/eventCenter';
 // import Img from './dragableElement/img';
 import factory from './dragableElementFactory';
+import * as store from 'elementStore';
 registerRegion('canvas', canvas._dom[0]);
-/**
- * @desc create element map
- * @type {Map<string, DragableElement>}
- */
-const elementsMap = new Map();
-
-// eslint-disable-next-line
-window.elementsMap = elementsMap;
 
 /**
  * 初始化canvas
@@ -35,7 +28,7 @@ function createElement(type, position) {
         y: position.y - item.y,
     });
     element.render();
-    elementsMap.set(element.key, element);
+    store.set(element.key, element);
 }
 Event.listen('canvas:createElement', createElement);
 /**
