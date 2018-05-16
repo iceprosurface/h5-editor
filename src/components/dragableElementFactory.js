@@ -13,7 +13,7 @@ r.keys().forEach((key) => {
 /**
  * dom工厂
  * @param {string} key
- * @return {DragableElement} 具体的每一个对象
+ * @return {DragableElement|AutoExportElement} 具体的每一个对象
  */
 export default function factory(key) {
     if (!modules.has(key)) {

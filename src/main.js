@@ -36,8 +36,8 @@ toolbar._dom.find('button[data-type="download"]').click(function() {
             data: 'console.log(1)',
         }],
         csss: [{
-            name: 'let.css',
-            data: 'text.css { border: 1px solid #111;}',
+            name: 'common.css',
+            data: '.item {position: absolute;}',
         }, {
             name: 'default.css',
             data: css,
@@ -46,9 +46,10 @@ toolbar._dom.find('button[data-type="download"]').click(function() {
             name: 'index.html',
             data: `
                 <html>
-                    <header>
-                        <link href="./css/default.css">
-                    </header>
+                    <head>
+                        <link rel="stylesheet" href="./css/common.css">
+                        <link rel="stylesheet" href="./css/default.css">
+                    </head>
                     <body>
                         ${body}
                     </body>
